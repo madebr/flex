@@ -21,8 +21,8 @@ if(HAVE_DLFCN_H AND HAVE_STDINT_H AND HAVE_STDDEF_H AND HAVE_INITTYPES_H AND
       if(freeExists)
         message(STATUS "ANSI C header files - found")
         set(STDC_HEADERS 1 CACHE INTERNAL "System has ANSI C header files")
-      endif(freeExists)
-    endif(memchrExists)
+      endif()
+    endif()
 endif()
 
 
@@ -124,7 +124,7 @@ string(REPLACE "]" "_" flex_ACINIT_LINE ${flex_ACINIT_LINE})
 
 # Parse name
 string(REGEX REPLACE "^AC_INIT__([^_]+).*$" "\\1" flex_PACKAGE_NAME "${flex_ACINIT_LINE}")
-MESSAGE(STATUS "PACAKGE_NAME=${flex_PACKAGE_NAME}")
+message(STATUS "PACKAGE_NAME=${flex_PACKAGE_NAME}")
 
 # Parse version string
 string(REGEX REPLACE "^AC_INIT__${flex_PACKAGE_NAME}_,_([^_]+).*$" "\\1" flex_VERSION_STRING "${flex_ACINIT_LINE}")
@@ -140,15 +140,15 @@ set(flex_VERSION ${flex_VERSION_MAJOR}.${flex_VERSION_MINOR}.${flex_VERSION_PATC
 
 # Name of package
 set(PACKAGE "flex")
-MESSAGE(STATUS "PACKAGE=${PACKAGE}")
+message(STATUS "PACKAGE=${PACKAGE}")
 
 # Define to the address where bug reports for this package should be sent.
 set(PACKAGE_BUGREPORT ${flex_BUGREPORT_STRING})
-MESSAGE(STATUS "PACKAGE_BUGREPORT=${PACKAGE_BUGREPORT}")
+message(STATUS "PACKAGE_BUGREPORT=${PACKAGE_BUGREPORT}")
 
 # Define to the full name of this package.
 set(PACKAGE_NAME ${flex_NAME})
-MESSAGE(STATUS "PACKAGE_NAME=${PACKAGE_NAME}")
+message(STATUS "PACKAGE_NAME=${PACKAGE_NAME}")
 
 # Define to the full name and version of this package.
 set(PACKAGE_STRING "")
@@ -162,7 +162,7 @@ set(PACKAGE_URL "")
 # Define to the version of this package.
 set(PACKAGE_VERSION ${flex_VERSION})
 set(PROJECT_VERSION ${flex_VERSION})
-MESSAGE(STATUS "PACKAGE_VERSION=${PACKAGE_VERSION}")
+message(STATUS "PACKAGE_VERSION=${PACKAGE_VERSION}")
 
 # If using the C implementation of alloca, define if you know the
 #   direction of stack growth for your system; otherwise it will be
@@ -190,7 +190,7 @@ endif()
 # Define to `int' if <sys/types.h> does not define.
 check_type_size(pid_t PID_T_TYPE_SIZE)
 if(NOT PID_T_TYPE_SIZE)
-  MESSAGE(STATUS "Setting pid_t to int")
+  message(STATUS "Setting pid_t to int")
   set(pid_t "int")
 endif()
 
@@ -200,7 +200,7 @@ endif()
 # Define to `unsigned int' if <sys/types.h> does not define.
 check_type_size(size_t SIZE_T_TYPE_SIZE)
 if(NOT SIZE_T_TYPE_SIZE)
-  MESSAGE(STATUS "Setting size_t to unsigned int")
+  message(STATUS "Setting size_t to unsigned int")
   set(size_t "unsigned int")
 endif()
 
